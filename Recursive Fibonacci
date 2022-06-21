@@ -1,0 +1,26 @@
+/*
+Recursive Fibonacci
+*/
+#include <stdio.h>
+
+unsigned long long int fibonacci(unsigned int n);
+
+int main(void){
+  unsigned int number;
+
+  printf("%s", "Number: ");
+  scanf("%u", &number);
+
+  unsigned long long int result = fibonacci(number);
+
+  printf("Fibonacci(%u) = %llu\n", number, result);
+  
+}
+
+unsigned long long int fibonacci(unsigned int n){
+  //Basic Step
+ if (n == 0 || n == 1)
+    return n;
+    //Recursive step
+  else return fibonacci(n - 1) + fibonacci(n - 2);
+}
