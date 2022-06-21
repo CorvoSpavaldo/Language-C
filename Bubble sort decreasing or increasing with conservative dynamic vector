@@ -1,0 +1,105 @@
+/*
+ Bubble sort decreasing or increasing with conservative dynamic vector
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+int main( void ) {
+
+
+    int size ,i,j, k ,f,l,temp,t,g;
+
+    //creating vector
+    
+    printf("Number of elements:");
+    scanf("%d",&size);
+    int *vector=malloc(size*sizeof(int));
+
+
+
+
+    //vector filling
+    
+    printf("\n");
+    for(k=0; k<size; k++){
+
+        printf("Value [%d]",k);
+        scanf("%d",&vector[k]);
+        printf("\n");
+    }
+    //Menù
+    //1)Bubble sort decreasing
+    //2)bubble sort increasing
+    //3)Print vector
+    //-1)Exit program
+
+    int x;
+
+    printf("\n\t\tMenu'\n1)Bubble sort decreasing\n2)Bubble sort increasing\n-1)Exit\n\n%s","? ");
+    scanf("%d",&x);
+    printf("\n");
+
+    while(x!=-1){
+        switch(x){
+
+            case 1:
+            //decreasing
+                printf("\n");
+                for(i=0; i<size-1; i++){
+                    for(j=0; j<size-i-1; j++){
+                        if(vector[j]<vector[j+1]){
+                             temp=vector[j];
+                            vector[j]=vector[j+1];
+                            vector[j+1]=temp;
+                        }
+                    }
+                }
+                printf("\nSORTED\n");
+
+                printf("\n");
+                for(f=0; f<size; f++){
+                    printf("%d\t",vector[f]);
+                }
+               break;
+
+            case 2:
+            //increasing
+                printf("\n");
+                for(t=0; t<size-1; t++){
+                    for(g=0; g<size-t-1; g++){
+                        if(vector[g]>vector[g+1]){
+                            temp=vector[g];
+                            vector[g]=vector[g+1];
+                            vector[g+1]=temp;
+                        }
+                    }
+                }
+                printf("\nSORTED\n");
+
+                printf("\n");
+                for(l=0; l<size; l++){
+                    printf("%d\t",vector[l]);
+                }
+
+                break;
+
+
+
+            default:
+                printf("\n");
+                puts("Invalid choice.\n");
+                break;
+        }
+        printf("\n\t\tMenu'\n1)Bubble sort decreasing\n2)Bubble sort increasing\n-1)Exit\n\n%s","? ");
+        scanf("%d", &x);
+    }
+
+
+
+free(vector);
+}
+
+
