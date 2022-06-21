@@ -1,0 +1,21 @@
+/*
+Non-recursive factorial
+*/
+#include <stdio.h>
+
+unsigned long long int factorial(unsigned int number);
+
+int main(void) {
+    int number;
+    printf("Number:");
+    scanf("%d",&number);
+    for (unsigned int i = 0; i <= number; i++)
+        printf("%u! = %llu\n", i, factorial(i));
+}
+
+unsigned long long int factorial(unsigned int n){
+    unsigned long long int factorial = 1;
+    for (int counter = n; counter >= 1; counter--)
+        factorial *= counter;
+    return factorial;
+}
