@@ -1,0 +1,112 @@
+/*
+ Dynamic matrices: Creation, filling, printing and free of memory.
+  */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+
+
+
+void main(){
+
+    int** M;
+    int r, c , i ,j , k , x;
+
+    srand(time(NULL));
+
+
+    //Alloocating matrix
+
+    printf("\nNumber of rows and columns:\t");
+    scanf("%d%d",&r,&c);
+
+    M=malloc(r*sizeof(int*));
+
+    for(i=0; i<r ; i++){
+
+        M[i]=malloc(c*sizeof(int));
+    }
+
+    //Random or manual filling
+
+    printf("\nFor a manual filling press (1) , for an random filling press (2)\n");
+    scanf("%d",&x);
+
+    switch(x){
+
+        case 1:
+            for(j=0; j<r; j++){
+                for(k=0; k<c; k++){
+                    printf("[%d][%d]",j,k);
+                    scanf("%d",&M[j][k]);
+                }
+            }
+
+            //print
+
+            for(j=0; j<r; j++){
+                printf("\n");
+                for(k=0; k<c; k++){
+                    printf("%d ",M[j][k]);
+
+                }
+            }
+            //deallocating matrix
+
+            for( i=0 ; i<r ; i ++) {
+
+                //the columns are allocated first
+
+                free(M[i]);
+            }
+
+            //and then the lines
+
+            free(M);
+            break;
+        case 2:
+
+            //random number 1 to 100
+
+            for(j=0; j<r; j++){
+                for(k=0; k<c; k++){
+                    M[j][k]=rand()%100;
+                }
+            }
+
+            //print
+
+            for(j=0; j<r; j++){
+                printf("\n");
+                for(k=0; k<c; k++){
+                    printf("%d ",M[j][k]);
+
+                }
+            }
+
+            //deallocating matrix
+
+            for( i=0 ; i<r ; i ++) {
+
+                //the columns are allocated first
+
+                free(M[i]);
+            }
+
+            //and then the lines
+
+            free(M);
+            break;
+
+
+        default:
+            printf("Command error");
+            break;
+    }
+
+
+
+}
