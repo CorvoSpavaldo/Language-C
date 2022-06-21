@@ -15,7 +15,9 @@ int main(void) {
 }
 
 unsigned long long int factorial(unsigned int n){
+    //Basic step
     if (n <= 1)
         return 1;
+        //Recursive step
     else return (n * factorial(n - 1));
 }
