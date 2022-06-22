@@ -1,0 +1,27 @@
+/*
+ String compare
+ */
+
+#include <stdio.h>
+#include <string.h>
+
+
+
+int main() {
+
+    //Declaration of strings
+    
+    char string1[4]="hola";
+    char string2[3]="hol";
+
+    //Comparing the strings
+    
+    if(strcmp(string1,string2)==0){
+        printf("\nAre egual\n");
+    }else{
+        printf("\nNot egual\n");
+    }
+
+
+
+}
