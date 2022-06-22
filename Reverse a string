@@ -1,0 +1,62 @@
+/*
+ Reverse string
+ */
+
+#include <stdio.h>
+#include <string.h>
+
+
+void reverse(char* string , int number){
+
+    //Create a string for copy a reversed string
+
+    char rev_string[number];
+    int i , k=0;
+
+    //Start counting the string passed by reference from the end and put the value in the first cell of reverse_string
+
+    for(i=number-1; i>=0; i--){
+
+        rev_string[k]=string[i];
+        k++;
+    }
+    int j;
+
+    //Print a reversed string
+
+    printf("\nReversed string is:\n");
+
+    for(j=0; j<number; j++){
+        printf("%c",rev_string[j]);
+    }
+
+
+
+}
+
+
+
+void main(){
+
+    //Initializing a string
+
+    int n=4 ,i ;
+    char string[4] = "hola";
+
+    //Print a start string
+
+    printf("\nStart string is:\n");
+    
+    for(i=0; i<n ; i++){
+
+        printf("%c",string[i]);
+    }
+    
+    printf("\n");
+    
+    reverse(&string, n);
+
+
+}
+
+//Pay attention with the string terminator '\0'!!!
