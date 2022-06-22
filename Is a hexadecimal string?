@@ -1,0 +1,39 @@
+/*
+ Is a hexadecimal string?
+ */
+
+#include <stdio.h>
+#include <ctype.h>
+
+
+int hex(char* string,int num){
+
+    int i;
+    
+    //Scroll through the array, if the character is hexadecimal go ahead and at the end retrone 1, 
+    //if instead you encounter a non-hexadecimal character , exit immediately and return 0.
+    
+    for(i=0; i<num; i++){
+        if(isxdigit(string[i])==0){
+            return 0;
+            break;
+        }else{
+
+        }
+    }
+    return 1;
+
+}
+
+void main() {
+
+   int n=4;
+   char string1[4]="4afz";
+
+    if(hex(&string1,n)==0){
+        printf("\nString not is hexadecimal");
+    }else{
+        printf("\nString is hexadecimal");
+    }
+
+}
