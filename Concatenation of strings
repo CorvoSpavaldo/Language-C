@@ -1,0 +1,22 @@
+/*
+ Concatenation of strings
+ */
+
+#include <stdio.h>
+#include <string.h>
+
+
+int main() {
+
+    char str1[10] = "Welcome, ";
+    char str2[20];
+    printf("Write your name: ");
+    scanf("%s",&str2);
+    
+    //Concatenation with srcat in the library of string.h
+    
+    printf("%s",strcat(str1, str2));
+
+
+    
+}
