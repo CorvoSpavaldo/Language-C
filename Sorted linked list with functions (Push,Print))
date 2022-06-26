@@ -1,0 +1,89 @@
+/*
+Sorted linked list with functions:
+-Push
+-Print
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct node{
+
+    int data;
+    struct nodo* next;
+};
+
+
+
+
+void push(struct node** head,int value){
+
+    //Create a new node
+
+    struct node *new = malloc(sizeof(struct node));
+    struct node* previous;
+    struct node* current;
+
+    if ( new != NULL ) {
+        new->data = value;
+        new->next = NULL;
+        previous = NULL;
+        current = *head;
+        while ( current != NULL &&
+                value > current->data ) {
+            previous = current;
+            current = current->next;
+        }
+
+        // Head insertion
+
+        if ( previous == NULL ) {
+            new->next = *head;
+            *head = new;
+        }
+        else {
+
+            // Inner insertion
+
+            previous->next = new;
+            new->next = current;
+        }
+    }
+    else {
+        printf(
+                "\n%d Not inserted. No memory.\n", value );
+    }
+}
+
+
+void print(struct nodo* head){
+    struct node* curs=head;
+    while(curs!=NULL){
+        printf("%d -> ",curs->data);
+        curs=curs->next;
+    }
+    printf("NULL\n");
+}
+
+
+
+void main(){
+
+    int n1 , n2 , n3 ;
+
+    struct node* LIST=NULL;
+
+    //Type 3 numbers to be included in the ordered list
+
+    printf("\n3 numbers to be included in a list:\n");
+    scanf("%d%d%d",&n1,&n2,&n3);
+
+    push(&LIST,n1);
+    push(&LIST,n2);
+    push(&LIST,n3);
+
+    print(LIST);
+
+
+}
