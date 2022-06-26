@@ -1,0 +1,43 @@
+/*
+Read numbers from file and put them into an array.The file has the following content:
+1 2 3
+*/
+
+#include <stdio.h>
+
+
+void main(){
+
+    FILE *p;
+
+    p=fopen("prova.txt","r"); //Reading mode
+
+
+
+    int num,i=0 , j;
+    int vector[3];
+
+    if (p==NULL) {
+            printf("The file cannot be opened!");
+    }else {
+
+
+        while(!feof(p) || i<4) {
+
+
+            fscanf(p, "%d", &vector[i]);
+            i++;
+
+
+        }
+
+
+        fclose(p);
+        for(j=0; j <3 ; j++ ) {
+            printf("%d\n", vector[j]);
+
+        }
+    }
+
+}
+
