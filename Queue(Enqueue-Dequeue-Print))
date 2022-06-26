@@ -1,0 +1,85 @@
+/*
+Queue functions:
+-Enqueue
+-Dequeue
+-Print
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct node{
+
+    int data;
+    struct nodo* next;
+};
+
+struct node *head=NULL , *tail=NULL;
+
+
+void enqueue(int value){
+
+    struct node* new=malloc(sizeof(struct node));
+    new->data=value;
+    new->next=NULL;
+
+    if(head==NULL && tail==NULL){
+        head=tail=new;
+    }else{
+        tail->next=new;
+        tail=new;
+    }
+}
+void dequeue(){
+    struct node* curs;
+
+    if(head==NULL){
+        printf("\nQueue is empty!\n");
+    }else{
+        curs=head;
+        head=head->next;
+        if(head==NULL)
+            tail=NULL;
+            free(curs);
+
+    }
+}
+void print(){
+    struct node* curs=head;
+    while(curs){
+        printf("%d -> ",curs->data);
+        curs=curs->next;
+    }
+    printf("NULL\n");
+}
+
+void main(){
+
+    //Enqueue 1 to 5
+
+    enqueue(1);
+    enqueue(2);
+    enqueue(3);
+    enqueue(4);
+    enqueue(5);
+
+    //Print
+
+    printf("\nThe list is:\n");
+    print();
+
+    //Dequeue of two value
+
+    dequeue();
+    dequeue();
+
+    //Print
+
+    printf("\nNew list after two dequeue is:\n");
+    print();
+
+
+
+
+}
