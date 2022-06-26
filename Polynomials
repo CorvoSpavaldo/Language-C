@@ -1,0 +1,38 @@
+/*
+Polynomials (Sum)
+*/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct COMPLEX{
+double re;
+double im;
+};
+
+void main() {
+
+
+    //Initialization
+    
+    double a;
+    double b;
+    struct COMPLEX *t;
+    t = malloc(sizeof(struct COMPLEX));
+
+            printf("\nEnter two float numbers:\n");
+            scanf("%lf%lf",&a,&b);
+
+            printf("\nThe numbers are:\na=\t%lf+0i\nb=\t%lf+0i",a,b);
+    
+    //Sum
+
+    t->re = a + b;
+    
+        
+        printf("\n\nThe sum is:\n");
+        printf("%lfi", t->re);
+
+}
