@@ -1,0 +1,133 @@
+/*
+Reading numbers from files put them at the end of a list with functions of:
+-Push
+-Pop
+-Print
+The file has the following content:
+1 2 3 4 5
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct node{
+
+    int data;
+    struct node* next;
+};
+
+
+
+
+void push(struct node** head, int n){
+
+    struct node* new=malloc(sizeof(struct node));
+    new->data=n;
+    new->next=NULL;
+
+    if(*head==NULL ){
+        *head=new;
+    }else{
+        struct node* curs=*head;
+        while(curs->next!=NULL){
+
+            curs=curs->next;
+        }
+        curs->next=new;
+    }
+
+
+}
+void print(struct node* head){
+
+    struct node* curs=head;
+
+    printf("\n");
+
+    while(curs!=NULL){
+
+        printf("%d -> ",curs->data);
+        curs=curs->next;
+    }
+    printf("NULL\n");
+
+}
+void pop(struct node** head , int key){
+
+    struct node* curs;
+
+
+    if((*head)->data==key){
+
+        curs=*head;
+        *head=(*head)->next;
+        free(curs);
+
+    }else{
+        struct node *curs2=*head;
+        while(curs2->next!=NULL){
+
+            if(curs2->next->data==key){
+                curs=curs2->next;
+                curs2->next=curs2->next->next;
+                free(curs);
+                break;
+            }
+            else
+                curs2=curs2->next;
+        }
+
+    }
+
+}
+
+
+
+void main(){
+
+    FILE *p;
+    struct node *LIST=NULL;
+    int n;
+
+    p=fopen("prova.txt","r"); //Read mode
+
+
+    if (p==NULL) {
+            printf("The file cannot be opened!");
+    }else {
+
+
+        fscanf(p,"%d",&n);//Scanf of the first file number
+        push(&LIST,n);           //Push on the list
+
+        fscanf(p,"%d",&n);//Scanf of the second file number
+        push(&LIST,n);           //Push on the list
+
+        fscanf(p,"%d",&n);//Scanf of the third file number
+        push(&LIST,n);           //Push on the list
+
+        fscanf(p,"%d",&n);//Scanf of the fourth file number
+        push(&LIST,n);           //Push on the list
+
+        fscanf(p,"%d",&n);//Scanf of the fifth file number
+        push(&LIST,n);           //Push on the list
+
+
+        printf("\n\nThe list is:\n");
+
+        print(LIST);             //Print the list
+
+        pop(&LIST,3);       //Pop a value (for example 3)
+
+        printf("\n\nThe list after pop of 3 is:\n");
+
+        print(LIST);            //Print a list
+
+        fclose(p);              //Closing the file
+
+
+    }
+
+}
+
